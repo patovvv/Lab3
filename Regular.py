@@ -45,5 +45,3 @@ class Regular(Docente):
             bono=800000
             
         self.SetSueldoFinal(bono+self.GetSueldoBase())
-
-    

@@ -1,4 +1,3 @@
-
 from Docente import Docente
 
 class Adjunto(Docente):
@@ -25,6 +24,3 @@ class Adjunto(Docente):
             valorhora=25000
 
         self.SetSueldoFinal(self.GetHoras()*valorhora)
-
-
-

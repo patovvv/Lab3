@@ -1,4 +1,3 @@
-
 class Persona():
     def __init__(self,nombre='',rut=''):
         self.__nombre=nombre
@@ -19,4 +18,3 @@ class Persona():
         return self.__rut
     def SetRut(self,rut):
         self.__rut=rut
-
