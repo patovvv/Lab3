@@ -14,6 +14,12 @@ class Adjunto(Docente):
     def SetHoras(self,horast):
         self.__horast=horast
 
+
+    def Modificar(self):
+        a=int(input("Ingrese cantidad de horas trabajadas: "))
+        self.SetHoras(a)
+        self.Sueldo()
+
     def Sueldo(self):       
         valorhora=0
         if self.GetGrado()=="Licenciado":
@@ -24,3 +30,14 @@ class Adjunto(Docente):
             valorhora=25000
 
         self.SetSueldoFinal(self.GetHoras()*valorhora)
+
+    
+    def ModDatos(self):
+        h=int(input("Ingrese cantidad de horas trabajadas en el mes: "))
+        while h<0 or h==str:
+            h=int(input("Error... Ingrese cantidad de horas trabajadas en el mes: "))
+        self.SetHoras(h)
+        self.Sueldo() 
+        print("")
+        print('Docente agregado correctamente, regresando al menu de inicio...')
+   
