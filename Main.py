@@ -79,3 +79,7 @@ while menu==0:
         if d==2:
             for lista in ladjunto:
                 print(lista)
+
+
+
+#probando subir archivo
