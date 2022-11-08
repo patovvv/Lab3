@@ -49,10 +49,16 @@ while menu==0:
     #print(f"Ingrese opción que desea realizar\n1.Ingresar docente\n2.Ver datos")
     print('_____')
 
-    op2 = int(input(f"Ingrese tipo docente\n1.Docente regular\n2.Docente adjunto\n3.Ver datos\nOpcion: "))
-    while op2 < 1 or op2 > 3 or op2==str:
-        op2 = input("Error... Ingrese tipo docente\n1.Docente regular\n2.Docente adjunto\nOpcion: ")
-        print('')
+    op2 =input(f"Ingrese tipo docente\n1.Docente regular\n2.Docente adjunto\n3.Ver datos")
+    while (True):
+            try:
+                op2=int(input("Opcion: "))
+                while op2 >3 or op2<1:
+                    op2=int(input("Error...ingrese solo numero de opcion mostrada: "))               
+                break
+            
+            except ValueError:
+                print("Error...ingrese solo numero de opcion mostrada")
 
     if op2==1:
         #b=1       
