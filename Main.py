@@ -1,3 +1,4 @@
+from io import open
 from Adjunto import Adjunto
 from Regular import Regular
 objt_adjunto=Adjunto()
@@ -6,7 +7,11 @@ global ladjunto
 global lregular
 ladjunto=[]
 lregular=[]
+archtxt1Agregar=open("DatosDRegulares.txt","r+",encoding="utf-8")
+archtxt1Leer=open("DatosDRegulares.txt","r+",encoding="utf-8")
 
+archtxt2Agregar=open("DatosDAdjuntos.txt","r+",encoding="utf-8")
+archtxt2Leer=open("DatosDAdjuntos.txt","r+",encoding="utf-8")
 
 def IngresoData(a):
     #Funcion modifica atributos en comun de objeto docente y objeto adjunto
@@ -35,22 +40,11 @@ def IngresoData(a):
     print("")
     a.SetInicio(input("Ingrese fecha de inicio de contrato de la siguiente manera... Día-Mes-Año\nFecha: "))
     print("")   
-    if a==objt_regular:
-        #Funcion modifica atributos especificos de objeto regular
+    if a==objt_regular:    
         objt_regular.ModDatos()
-    if a==objt_adjunto:
-        #Funcion modifica atributos especificos de objeto adjunto
-        objt_adjunto.ModDatos()
 
-def hola(gg):
-        while (True):
-            try:
-                gg=int(input("Opcion: "))
-                while gg >3 or gg<1:
-                    gg=int(input("Ingrese solo entre las opciones 1, 2 y 3: "))               
-                break           
-            except ValueError:
-                print("Error...")
+    if a==objt_adjunto:       
+        objt_adjunto.ModDatos()
 
     
 menu=0
@@ -58,7 +52,6 @@ while menu==0:
     print('_____')
     print('Menu docente')
     print("")   
-    #print(f"Ingrese opción que desea realizar\n1.Ingresar docente\n2.Ver datos")
     print('_____')
     print(f"Ingrese opción mostrada\n1.Docente regular\n2.Docente adjunto\n3.Ver datos")
     while (True):
@@ -70,10 +63,12 @@ while menu==0:
             except ValueError:
                 print("Error...")
 
-    if op2==1:           
-        lregular.append(IngresoData(objt_regular))
-    if op2==2:
-        ladjunto.append(IngresoData(objt_adjunto))
+    if op2==1:    
+        archtxt1Agregar.write(str(IngresoData(objt_regular)))   
+
+    if op2==2:       
+        archtxt2Agregar.write(str(IngresoData(objt_adjunto)))
+
     if op2==3:
         print("")
         print("Informacion docente")
@@ -91,12 +86,16 @@ while menu==0:
                 print("Error...")
         if d==1:
             #for lista in lregular:
-            print(lregular)
-            print("Volviendo al menu inicial")
+            #print(lregular)
+            #lista1=archtxt1Leer.read()
+            print(archtxt1Leer.read())
+            espacio=input("Volviendo al menu inicial...")
         if d==2:
             #for lista in ladjunto:
-            print(ladjunto)
-            print("Volviendo al menu inicial")
+            #print(ladjunto)
+            print(archtxt2Leer.read())
+            
+            espacio=input("Volviendo al menu inicial...")
 
 
 #probando subir archivo

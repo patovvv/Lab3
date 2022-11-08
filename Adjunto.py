@@ -1,5 +1,6 @@
 from Docente import Docente
 
+
 class Adjunto(Docente):
     def __init__(self,nombre='',rut='',grado='',inicio='',tipo='Adjunto',horast=0,sueldofinal=0):
         super().__init__(nombre,rut,grado,inicio,tipo,sueldofinal)       
@@ -40,5 +41,7 @@ class Adjunto(Docente):
         self.Sueldo() 
         print("")
         print('Docente agregado correctamente, regresando al menu de inicio...')
+        
+        
         menu=0
    
