@@ -21,10 +21,10 @@ def IngresoData(a):
             try:
                 pregunt=int(input("Opcion: "))
                 while pregunt >3 or pregunt<1:
-                    pregunt=int(input("Error...ingrese solo entre las opciones 1, 2 y 3: "))               
+                    pregunt=int(input("Ingrese solo entre las opciones 1, 2 y 3: "))               
                 break           
             except ValueError:
-                print("Error...ingrese solo numero de opcion mostrada")
+                print("Error...")
 
     if pregunt==1:
         a.SetGrado("Licenciado")
@@ -42,6 +42,16 @@ def IngresoData(a):
         #Funcion modifica atributos especificos de objeto adjunto
         objt_adjunto.ModDatos()
 
+def hola(gg):
+        while (True):
+            try:
+                gg=int(input("Opcion: "))
+                while gg >3 or gg<1:
+                    gg=int(input("Ingrese solo entre las opciones 1, 2 y 3: "))               
+                break           
+            except ValueError:
+                print("Error...")
+
     
 menu=0
 while menu==0:
@@ -50,15 +60,15 @@ while menu==0:
     print("")   
     #print(f"Ingrese opción que desea realizar\n1.Ingresar docente\n2.Ver datos")
     print('_____')
-    print(f"Ingrese tipo docente\n1.Docente reguputlar\n2.Docente adjunto\n3.Ver datos")
+    print(f"Ingrese opción mostrada\n1.Docente regular\n2.Docente adjunto\n3.Ver datos")
     while (True):
             try:
                 op2=int(input("Opcion: "))
                 while op2 >3 or op2<1:
-                    op2=int(input("Error...ingrese solo entre las opciones 1, 2 y 3: "))               
+                    op2=int(input("Ingrese solo entre las opciones 1, 2 y 3: "))               
                 break           
             except ValueError:
-                print("Error...ingrese solo numero de opcion mostrada")
+                print("Error...")
 
     if op2==1:           
         lregular.append(IngresoData(objt_regular))
@@ -67,24 +77,26 @@ while menu==0:
     if op2==3:
         print("")
         print("Informacion docente")
-        print('')
-        print("Seleccione que tipo de datos desea ver")
-        d=int(input("1.Datos docentes regulares\n2.Datos docentes adjuntos\nOpcion: "))
+        print("_____")
+        print("Seleccione lista de datos")
+        print("_____")
+        print("1.Lista docentes regulares\n2.Lista docentes adjuntos")
         while (True):
             try:
                 d=int(input("Opcion: "))
                 while d>2 or d<1:
-                    d=int(input("Error...ingrese solo entre las opciones 1 y 2: "))               
+                    d=int(input("Ingrese solo entre las opciones 1 o 2: "))               
                 break           
             except ValueError:
-                print("Error...ingrese solo numero de opcion mostrada")
+                print("Error...")
         if d==1:
-            for lista in lregular:
-                print(lista)              
+            #for lista in lregular:
+            print(lregular)
+            print("Volviendo al menu inicial")
         if d==2:
-            for lista in ladjunto:
-                print(lista)
-
+            #for lista in ladjunto:
+            print(ladjunto)
+            print("Volviendo al menu inicial")
 
 
 #probando subir archivo

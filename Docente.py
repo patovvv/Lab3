@@ -33,3 +33,5 @@ class Docente(Persona):
         return self.__sueldofinal
     def SetSueldoFinal(self,sueldofinal):
         self.__sueldofinal=sueldofinal
+
+    

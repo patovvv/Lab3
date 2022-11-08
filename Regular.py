@@ -47,18 +47,31 @@ class Regular(Docente):
         self.SetSueldoFinal(bono+self.GetSueldoBase())
 
     def ModDatos(self):
-        j=int(input("Ingrese jornada\n1.Jornada completa\n2.Jornada media\nOpción:"))
-        while j>2 or j<1 or j==str:
-            j=int(input("Error...\nIngrese opción valida\n1.Jornada completa\n2.Jornada media\nOpción:"))
+        print("Ingrese jornada\n1.Jornada completa\n2.Jornada media")
+        while (True):
+            try:
+                j=int(input("Opcion: "))
+                while j >3 or j<1:
+                    j=int(input("Ingrese solo entre las opciones 1, 2 y 3: "))               
+                break           
+            except ValueError:
+                print("Error...")
         if j==1:
             self.SetJornada("Completa")
         if j==2:
             self.SetJornada("Media")
-        s=int(input("Ingrese su sueldo sin comas ni puntos: "))
-        while s==str or s<0:
-            s=int(input("Error... Ingrese su sueldo sin comas ni puntos: "))
+        print("Ingrese su sueldo sin comas ni puntos")
+        while (True):
+            try:
+                s=int(input("Opcion: "))
+                while s<0:
+                    s=int(input("Ingrese sueldo mayor a cero: "))               
+                break           
+            except ValueError:
+                print("Error...")
         self.SetSueldoBase(s)
         self.Bono()
         print('Docente agregado correctamente, regresando al menu de inicio...')
+        menu=0
 
         
