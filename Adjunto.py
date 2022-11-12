@@ -1,6 +1,7 @@
 from Docente import Docente
 
 
+
 class Adjunto(Docente):
     def __init__(self,nombre='',rut='',grado='',inicio='',tipo='Adjunto',horast=0,sueldofinal=0):
         super().__init__(nombre,rut,grado,inicio,tipo,sueldofinal)       
@@ -28,6 +29,7 @@ class Adjunto(Docente):
 
     
     def ModDatos(self):
+        global menu
         print("Ingrese cantidad de horas trabajadas en el mes")
         while (True):
             try:
@@ -40,7 +42,7 @@ class Adjunto(Docente):
         self.SetHoras(h)
         self.Sueldo() 
         print("")
-        print('Docente agregado correctamente, regresando al menu de inicio...')
+        espacio=input('Docente agregado correctamente, regresando al menu de inicio...')
         
         
         menu=0

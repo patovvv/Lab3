@@ -7,11 +7,11 @@ global ladjunto
 global lregular
 ladjunto=[]
 lregular=[]
-archtxt1Agregar=open("DatosDRegulares.txt","r+",encoding="utf-8")
-archtxt1Leer=open("DatosDRegulares.txt","r+",encoding="utf-8")
+arch1=open("arch1.txt","a",encoding="utf-8")
+#arch1Leer=open("DatosDRegulares.txt","r",encoding="utf-8")
 
-archtxt2Agregar=open("DatosDAdjuntos.txt","r+",encoding="utf-8")
-archtxt2Leer=open("DatosDAdjuntos.txt","r+",encoding="utf-8")
+arch2=open("arch2.txt","a",encoding="utf-8")
+#arch2Leer=open("DatosDAdjuntos.txt","r",encoding="utf-8")
 
 def IngresoData(a):
     #Funcion modifica atributos en comun de objeto docente y objeto adjunto
@@ -40,11 +40,27 @@ def IngresoData(a):
     print("")
     a.SetInicio(input("Ingrese fecha de inicio de contrato de la siguiente manera... Día-Mes-Año\nFecha: "))
     print("")   
-    if a==objt_regular:    
+    if a==objt_regular:  
         objt_regular.ModDatos()
+        EscribirArchivo1(objt_regular)
 
-    if a==objt_adjunto:       
+    if a==objt_adjunto:
         objt_adjunto.ModDatos()
+        EscribirArchivo2(objt_adjunto)
+        
+def EscribirArchivo1(fp):
+    ret=arch1.open("arch1.txt",mode="w",encoding="utf-8")
+    ret.write(fp)
+def EscribirArchivo2(fp):
+    ret=arch1.open("arch2.txt",mode="w",encoding="utf-8")
+    ret.write(fp)
+
+def LeerArchivo1():
+    ret=arch1.open("arch1.txt",mode='r', encoding="utf-8")
+    ret.read()
+def LeerArchivo2():
+    ret=arch2.open("arch2.txt",mode='r', encoding="utf-8")
+    ret.read()
 
     
 menu=0
@@ -63,12 +79,10 @@ while menu==0:
             except ValueError:
                 print("Error...")
 
-    if op2==1:    
-        archtxt1Agregar.write(str(IngresoData(objt_regular)))   
-
-    if op2==2:       
-        archtxt2Agregar.write(str(IngresoData(objt_adjunto)))
-
+    if op2==1:
+        IngresoData(objt_regular)
+    if op2==2:
+        IngresoData(objt_adjunto)
     if op2==3:
         print("")
         print("Informacion docente")
@@ -85,17 +99,9 @@ while menu==0:
             except ValueError:
                 print("Error...")
         if d==1:
-            #for lista in lregular:
-            #print(lregular)
-            #lista1=archtxt1Leer.read()
-            print(archtxt1Leer.read())
+            LeerArchivo1()
             espacio=input("Volviendo al menu inicial...")
+
         if d==2:
-            #for lista in ladjunto:
-            #print(ladjunto)
-            print(archtxt2Leer.read())
-            
+            LeerArchivo2()        
             espacio=input("Volviendo al menu inicial...")
-
-
-#probando subir archivo

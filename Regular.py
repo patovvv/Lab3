@@ -47,6 +47,7 @@ class Regular(Docente):
         self.SetSueldoFinal(bono+self.GetSueldoBase())
 
     def ModDatos(self):
+        global menu
         print("Ingrese jornada\n1.Jornada completa\n2.Jornada media")
         while (True):
             try:
@@ -71,7 +72,7 @@ class Regular(Docente):
                 print("Error...")
         self.SetSueldoBase(s)
         self.Bono()
-        print('Docente agregado correctamente, regresando al menu de inicio...')
+        espacio=input('Docente agregado correctamente, regresando al menu de inicio...')
         menu=0
 
         
