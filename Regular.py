@@ -76,3 +76,4 @@ class Regular(Docente):
         menu=0
 
         
+        

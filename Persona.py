@@ -18,3 +18,4 @@ class Persona():
         return self.__rut
     def SetRut(self,rut):
         self.__rut=rut
+        
