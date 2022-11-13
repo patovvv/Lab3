@@ -76,4 +76,6 @@ class Regular(Docente):
         menu=0
 
         
-        
+    def RetornaDatos(self):
+        a='Nombre: {} -  Rut: {}  -  Grado: {}  -  Inicio: {}  -  Tipo: {}  -  Jornada: {}  -  Sueldo base: {}  -  Sueldo a pagar: {}'.format(self.GetNombre(),self.GetRut(),self.GetGrado(),self.GetInicio(),self.GetTipo(),self.GetJornada(),self.GetSueldoBase(),self.GetSueldoFinal())
+        print(a)

@@ -44,7 +44,11 @@ class Adjunto(Docente):
         print("")
         espacio=input('Docente agregado correctamente, regresando al menu de inicio...')
         
+
+    def RetornaDatos(self):
+        a='Nombre: {} -  Rut: {}  -  Grado: {}  -  Inicio: {}  -  Tipo: {}  -  Horas trabajadas: {}  -  Sueldo a pagar: {}'.format(self.GetNombre(),self.GetRut(),self.GetGrado(),self.GetInicio(),self.GetTipo(),self.GetHoras(),self.GetSueldoFinal())
+        print(a)
         
-        menu=0
+        
         
    

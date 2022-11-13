@@ -1,25 +1,66 @@
-from io import open
+import os
+
 from Adjunto import Adjunto
 from Regular import Regular
+
 objt_adjunto=Adjunto()
 objt_regular=Regular()
 global ladjunto
 global lregular
 ladjunto=[]
 lregular=[]
-arch1=open("arch1.txt","a",encoding="utf-8")
-#arch1Leer=open("DatosDRegulares.txt","r",encoding="utf-8")
 
-arch2=open("arch2.txt","a",encoding="utf-8")
-#arch2Leer=open("DatosDAdjuntos.txt","r",encoding="utf-8")
+
+def DatosRegular():
+    archivo = open('ListaRegular.txt','a')
+    for i in range(len(lregular)):
+        var = "Nombre: {}, Rut: {}, Grado: {}, Inicio: {}, Tipo: {}, Jornada: {}, Sueldo base: {}, Sueldo a pagar: {}".format(lregular[i].GetNombre(),lregular[i].GetRut(),lregular[i].GetGrado(),lregular[i].GetInicio(),lregular[i].GetTipo(),lregular[i].GetJornada(),lregular[i].GetSueldoBase(),lregular[i].GetSueldoFinal())
+        archivo.write(var+os.linesep)
+    archivo.close()
+
+def DatosAdjunto():
+    archivo = open('ListaAdjuntos.txt','a')
+    for i in range(len(ladjunto)):
+        var='Nombre: {}, Rut: {}, Grado: {}, Inicio: {}, Tipo: {}, Horas trabajadas: {}, Sueldo a pagar: {}'.format(ladjunto[i].GetNombre(),ladjunto[i].GetRut(),ladjunto[i].GetGrado(),ladjunto[i].GetInicio(),ladjunto[i].GetTipo(),ladjunto[i].GetHoras(),ladjunto[i].GetSueldoFinal())
+        archivo.write(var+os.linesep)
+    archivo.close()
+
+def MostrarRegulares():
+    with open("ListaRegular.txt") as f:   
+        archivo=f.read()
+        print(archivo)
+        archivo=f.close()
+
+def MostrarAdjuntos():
+    with open("ListaAdjuntos.txt") as f:   
+        archivo=f.read()
+        print(archivo)
+        archivo=f.close()
+    
+
+def VerificarRut():
+    global rut
+    while(True):
+        try:
+            rut=input("Ingrese su rut sin puntos ni digito verificador: ")
+            digito=11-sum([int(a)*int(b) for a,b in zip(str(rut).zfill(8),"32765432")])%11
+            a={10:"k",11:"0"}
+            if digito==10 or digito==11:
+                a.get(digito,str(digito))
+            print ("Su rut fue ingresado correctamente")
+            rut=str(rut)+str(digito)
+            break
+            
+        except:
+            print("Error... verifique ingresar su rut sin puntos ni digito verificador")
 
 def IngresoData(a):
     #Funcion modifica atributos en comun de objeto docente y objeto adjunto
     print("")
-    a.SetNombre(input("Ingrese su nombre completo: "))
+    a.SetNombre(input("Ingrese su nombre completo: ").capitalize())
     print("")
-    a.SetRut(input("Ingrese su rut: "))
-    print("")
+    VerificarRut()
+    a.SetRut(rut)
     print("")
     print(f"Ingrese opcion segun su grado\n1.Licenciado\n2.Magister\n3.Doctorado")
     while (True):
@@ -42,27 +83,17 @@ def IngresoData(a):
     print("")   
     if a==objt_regular:  
         objt_regular.ModDatos()
-        EscribirArchivo1(objt_regular)
-
+        
+        lregular.append(objt_regular)
+        DatosRegular()
+        
     if a==objt_adjunto:
         objt_adjunto.ModDatos()
-        EscribirArchivo2(objt_adjunto)
+        #
+        ladjunto.append(objt_adjunto)
+        DatosAdjunto
         
-def EscribirArchivo1(fp):
-    ret=arch1.open("arch1.txt",mode="w",encoding="utf-8")
-    ret.write(fp)
-def EscribirArchivo2(fp):
-    ret=arch1.open("arch2.txt",mode="w",encoding="utf-8")
-    ret.write(fp)
-
-def LeerArchivo1():
-    ret=arch1.open("arch1.txt",mode='r', encoding="utf-8")
-    ret.read()
-def LeerArchivo2():
-    ret=arch2.open("arch2.txt",mode='r', encoding="utf-8")
-    ret.read()
-
-    
+        
 menu=0
 while menu==0:
     print('_____')
@@ -83,7 +114,7 @@ while menu==0:
         IngresoData(objt_regular)
     if op2==2:
         IngresoData(objt_adjunto)
-    if op2==3:
+    if op2==3:#REVISAR
         print("")
         print("Informacion docente")
         print("_____")
@@ -99,9 +130,9 @@ while menu==0:
             except ValueError:
                 print("Error...")
         if d==1:
-            LeerArchivo1()
+            MostrarRegulares()
             espacio=input("Volviendo al menu inicial...")
 
         if d==2:
-            LeerArchivo2()        
+            MostrarAdjuntos()
             espacio=input("Volviendo al menu inicial...")
