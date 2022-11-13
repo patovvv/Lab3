@@ -4,7 +4,7 @@ class Persona():
         self.__rut=rut
 
     def __str__(self):
-        return 'Nombre: {} -  Rut: {}'.format(self.GetNombre(),self.GetRut())
+        return 'Nombre: {}, Rut: {}'.format(self.GetNombre(),self.GetRut())
         
     #Get y Set de nombre del docente
     def GetNombre(self):
@@ -17,5 +17,4 @@ class Persona():
     def GetRut(self):
         return self.__rut
     def SetRut(self,rut):
-        self.__rut=rut
-        
+        self.__rut=rut       

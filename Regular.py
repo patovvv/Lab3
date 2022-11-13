@@ -7,9 +7,9 @@ class Regular(Docente):
         self.__sueldobase=sueldobase
 
     def __str__(self):
-        return 'Nombre: {} -  Rut: {}  -  Grado: {}  -  Inicio: {}  -  Tipo: {}  -  Jornada: {}  -  Sueldo base: {}  -  Sueldo a pagar: {}'.format(self.GetNombre(),self.GetRut(),self.GetGrado(),self.GetInicio(),self.GetTipo(),self.GetJornada(),self.GetSueldoBase(),self.GetSueldoFinal())
+        super().__str__()
+        return 'Jornada: {}, Sueldo base: {}'.format(self.GetJornada(),self.GetSueldoBase())
          
-
     #Get y Set de jornada del docente
     def GetJornada(self):
         return self.__jornada
@@ -47,7 +47,6 @@ class Regular(Docente):
         self.SetSueldoFinal(bono+self.GetSueldoBase())
 
     def ModDatos(self):
-        global menu
         print("Ingrese jornada\n1.Jornada completa\n2.Jornada media")
         while (True):
             try:
@@ -73,9 +72,3 @@ class Regular(Docente):
         self.SetSueldoBase(s)
         self.Bono()
         espacio=input('Docente agregado correctamente, regresando al menu de inicio...')
-        menu=0
-
-        
-    def RetornaDatos(self):
-        a='Nombre: {} -  Rut: {}  -  Grado: {}  -  Inicio: {}  -  Tipo: {}  -  Jornada: {}  -  Sueldo base: {}  -  Sueldo a pagar: {}'.format(self.GetNombre(),self.GetRut(),self.GetGrado(),self.GetInicio(),self.GetTipo(),self.GetJornada(),self.GetSueldoBase(),self.GetSueldoFinal())
-        print(a)

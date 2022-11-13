@@ -1,1 +1,2 @@
 
+Nombre: 12, Rut: 27, Grado: Magister, Inicio: 1-2-3, Tipo: Regular, Jornada: Media, Sueldo base: 2, Sueldo a pagar: 300002

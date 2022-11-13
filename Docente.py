@@ -8,7 +8,8 @@ class Docente(Persona):
         self.__tipo=tipo
         self.__sueldofinal=sueldofinal
     def __str__(self):
-        return 'Nombre: {} -  Rut: {}  -  Grado: {}  -  Inicio: {}  -  Tipo: {}  -  Sueldo a pagar: {}'.format(self.GetNombre(),self.GetRut(),self.GetGrado(),self.GetInicio(),self.GetTipo(),self.GetSueldoFinal())
+        super().__str__()
+        return 'Grado: {}, Inicio: {}, Tipo: {}, Sueldo a pagar: {}'.format(self.GetGrado(),self.GetInicio(),self.GetTipo(),self.GetSueldoFinal())
 
     #Get y Set de grado docente
     def GetGrado(self):

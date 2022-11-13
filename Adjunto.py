@@ -8,14 +8,14 @@ class Adjunto(Docente):
         self.__horast=horast 
 
     def __str__(self):
-        return 'Nombre: {} -  Rut: {}  -  Grado: {}  -  Inicio: {}  -  Tipo: {}  -  Horas trabajadas: {}  -  Sueldo a pagar: {}'.format(self.GetNombre(),self.GetRut(),self.GetGrado(),self.GetInicio(),self.GetTipo(),self.GetHoras(),self.GetSueldoFinal())
+        super().__str__()
+        return 'Horas trabajadas: {}'.format(self.GetHoras())
         
     #Get y Set de horas trabajadas por docente
     def GetHoras(self):
         return self.__horast
     def SetHoras(self,horast):
         self.__horast=horast
-
 
     def Sueldo(self):       
         valorhora=0
@@ -27,9 +27,7 @@ class Adjunto(Docente):
             valorhora=25000
         self.SetSueldoFinal(self.GetHoras()*valorhora)
 
-    
     def ModDatos(self):
-        global menu
         print("Ingrese cantidad de horas trabajadas en el mes")
         while (True):
             try:
@@ -43,12 +41,3 @@ class Adjunto(Docente):
         self.Sueldo() 
         print("")
         espacio=input('Docente agregado correctamente, regresando al menu de inicio...')
-        
-
-    def RetornaDatos(self):
-        a='Nombre: {} -  Rut: {}  -  Grado: {}  -  Inicio: {}  -  Tipo: {}  -  Horas trabajadas: {}  -  Sueldo a pagar: {}'.format(self.GetNombre(),self.GetRut(),self.GetGrado(),self.GetInicio(),self.GetTipo(),self.GetHoras(),self.GetSueldoFinal())
-        print(a)
-        
-        
-        
-   
