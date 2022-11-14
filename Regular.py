@@ -51,8 +51,8 @@ class Regular(Docente):
         while (True):
             try:
                 j=int(input("Opcion: "))
-                while j >3 or j<1:
-                    j=int(input("Ingrese solo entre las opciones 1, 2 y 3: "))               
+                while j >2 or j<1:
+                    j=int(input("Ingrese solo entre las opciones 1, 2: "))               
                 break           
             except ValueError:
                 print("Error...")

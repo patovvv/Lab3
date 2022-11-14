@@ -40,19 +40,27 @@ def MostrarAdjuntos():
 
 def VerificarRut():
     global rut
-    while(True):
+    ciclo=0
+    digit=1
+    digito=0
+    while ciclo==0:
         try:
             rut=input("Ingrese su rut sin puntos ni digito verificador: ")
-            digito=11-sum([int(a)*int(b) for a,b in zip(str(rut).zfill(8),"32765432")])%11
+            digit=str(input("Ingrese su digito verificador: "))
+            digito=str(11-sum([int(a)*int(b) for a,b in zip(str(rut).zfill(8),"32765432")])%11)
             a={10:"k",11:"0"}
             if digito==10 or digito==11:
                 a.get(digito,str(digito))
-            print ("Su rut fue ingresado correctamente")
-            rut=str(rut)+str(digito)
-            break
-            
+            if digit==digito:
+                print("Su rut fue ingresado correctamente...")
+                rut="{}-{}".format(rut,digito)
+                ciclo=3
+                break
         except:
-            print("Error... verifique ingresar su rut sin puntos ni digito verificador")
+            print("Error...")
+       
+            
+        
 
 def IngresoData(a):
     #Funcion modifica atributos en comun de objeto docente y objeto adjunto
@@ -62,7 +70,7 @@ def IngresoData(a):
     VerificarRut()
     a.SetRut(rut)
     print("")
-    print(f"Ingrese opcion segun su grado\n1.Licenciado\n2.Magister\n3.Doctorado")
+    print(f"Ingrese opcion segun su grado \n1.Licenciado\n2.Magister\n3.Doctorado")
     while (True):
             try:
                 pregunt=int(input("Opcion: "))
